@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @news.category %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @news.title %>
+</p>
+
+<p>
+  <strong>Subtitle:</strong>
+  <%= @news.subtitle %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @news.details.html_safe %>
+</p>
+
+<p>
+  <strong>Published:</strong>
+  <%= @news.published %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @news.priority %>
+</p>
+
+<p>
+  <strong>Published at:</strong>
+  <%= @news.published_at %>
+</p>
+
+<%= link_to 'Edit', edit_news_path(@news) %> |
+<%= link_to 'Back', root_path %>
