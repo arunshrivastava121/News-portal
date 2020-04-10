@@ -3,7 +3,6 @@ class NewsController < ApplicationController
   before_action :set_news, only: [:show, :edit, :update, :destroy]
 
   def index
-    binding.pry
     @news = News.all
   end
 
@@ -53,7 +52,6 @@ class NewsController < ApplicationController
 
   private
     def set_news
-      binding.pry
       @news = News.find(params[:id])
     end
 
