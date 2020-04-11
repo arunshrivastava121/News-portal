@@ -16,4 +16,5 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 //= require tinymce-jquery
 //= require tinymce
+//= link jquery.min.js
 import "bootstrap"

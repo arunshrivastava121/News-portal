@@ -1,34 +1,80 @@
-<p id="notice"><%= notice %></p>
-<h1>Welcome to Kreditz News Portal.</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Title</th>
-      <th>Subtitle</th>
-      <th>Details</th>
-      <th>Published</th>
-      <th>Priority</th>
-      <th>Published at</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @news.each do |news| %>
-      <tr>
-        <td><%= news.category %></td>
-        <td><%= news.title %></td>
-        <td><%= news.subtitle %></td>
-        <td><%= news.details.html_safe %></td>
-        <td><%= news.published %></td>
-        <td><%= news.priority %></td>
-        <td><%= news.published_at %></td>
-        <td><%= link_to 'Show', news %></td>
-        <td><%= link_to 'Edit', edit_news_path(news) %></td>
-        <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<%= link_to 'New News', new_news_path %>
+<section>
+  <header>
+    <div id="header">
+      <div class="inner-header">
+        <div class="logo"><%= image_tag("logo.png", alt: "kreditz") %></div>
+        <!-- <div class="navigation-menu">
+          <ul>
+            <li><a href="consumers.html" title="Notifications"><img src="images/icon_notification.png">Notifications</a></li>
+            <li><a href="consumers.html" title="FAQ"><img src="images/icon_faq.png">FAQ</a></li>
+            <li><a href="consumers.html" title="Support"><img src="images/icon_support.png">Support</a></li>
+            <li><a href="consumers.html" title="Settings"><img src="images/icon_setting.png">Settings</a></li>
+            <li><a href="consumers.html" title="Logout"><img src="images/icon_logout.png">Log out</a></li>
+          </ul>
+        </div>
+        <div class="menu-sp"><i class="fa fa-bars"></i></div> -->
+      </div>
+    </div>
+  </header>
+</section>
+<section>
+  <div class="main">
+    <div class="breadcrum-welcome">
+      <div class="welcome-text-breadcrum">
+        <ul>
+          <li><a href="javascript:void(0)" class="anchor-active">Home</a></li>
+          <li><%= image_tag("icon_double_right.png") %></li>
+          <li><a href="javascript:void(0)">Development</a></li>
+          <li><%= image_tag("icon_double_right.png") %></li>
+          <li><a href="javascript:void(0)">New in Kredits</a></li>
+        </ul>
+        <div class="news-search">
+          <div class="form-group">
+            <input type="search" name="search" class="form-control" placeholder="Search" id="news-search">
+          </div>
+        </div>
+      </div>
+      <h2>Welcome to the new Kreditz</h2>
+    </div>
+  </div>
+  <div class="full-border-table">
+    <div class="inner-table-header">
+      <div class="cate-description">
+        <div class="left-categories">
+          <h6>Categories <i class="fa fa-chevron-down"></i></h6>
+          <ul>
+          <% @news.each do |news|%>
+          <li><%= link_to "#{news.category}", news.title.match(' ').present? ? "##{news.title.gsub!(' ', '_')}" : "##{news.title}" %></li>
+          <% end %>
+          </ul>
+        </div>
+        <div class="right-news-post">
+          <% @news.each do |news| %>
+            <div id='<%=news.title%>' class="capsule-btn">
+              <h2 ><%= news.title.match('_').present? ? news.title.gsub!('_', ' ' ) : news.title %><span>General Announcement</span></h2>								
+              <h3><%= news.subtitle %></h3>
+              <p>15 Days Ago</p>
+              <%= news.details.html_safe %>
+            </div>
+          <% end %>
+          <div class="capsule-btn">
+            <h2>Main Heading<span class="green-feature"><%= link_to 'New Feature', new_news_path, style: "color: white; text-decoration: none;", class: "green-feature" %></span></h2>
+            <h3>subheading title</h3>
+            <p>24 Days Ago</p>
+          </div>
+          <p class="para-text"><span>New Activity chart & details</span><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet dolor, dignissim tempus, integer bibendum. Semper quisque nulla urna, interdum morbi eget sit cras. Amet, sit dapibus pretium tortor morbi eget hendrerit cras. Amet nulla in sagittis suspendisse ut. Nec quisque nisl, lectus eget tellus ut. Nec, nam adipiscing tristique elementum maecenas mauris dictum erat quis. Euismod libero, elementum nulla in nunc nullam cursus a. Sit in lobortis eget viverra. Egestas felis urna morbi id cum ultricies fames mauris eget.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="text/javascript">
+$(document).ready(function(){
+	if($(window).width()<=768) {
+    alert('Less than 960 resize');
+		$('.left-categories h6').click(function() {
+	    $('.left-categories ul').slideToggle('slow');
+	  });
+  }
+});
+</script>

@@ -1,7 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NewsPortal</title>
+    <head>
+    <title>Kriditz | News</title>
+    <%= favicon_link_tag(source = "favicon.png", options = {}) %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Funding Marketing Template" />
+    <meta name="author" content="chandan.jachpure.jack@gmail.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:700&display=swap" rel="stylesheet"> 
+    <%= stylesheet_link_tag "style.css" %>
+    <%= stylesheet_link_tag "dataTables.bootstrap.min.css" %>
+    <%= javascript_include_tag "jquery.min.js" %>
+    <%= javascript_include_tag "bootstrap.min.js" %>
+    <%= javascript_include_tag "external.js" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script type="text/javascript" src="/assets/tinymce.js"></script>
@@ -10,9 +28,9 @@
   </head>
 
   <body>
-    <%= tinymce_assets %>
-    <%= tinymce %>
-    <% session[:authorized] = true %>
-    <%= yield %>
+      <%= tinymce_assets %>
+      <%= tinymce %>
+      <% session[:authorized] = true %>
+      <%= yield %>
   </body>
 </html>
